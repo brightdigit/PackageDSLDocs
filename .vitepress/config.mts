@@ -12,6 +12,7 @@ const baseURL =
 export default defineConfig({
   title: "PackageDSL",
   description: "Simplify the management of your Package.swift file.",
+  cleanUrls : true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -28,11 +29,13 @@ export default defineConfig({
         {
           text: 'Subcommands',
           items: [       
-            { text: 'Library', link: '/cli/subcommands/libraries' },
-            { text: 'Machine', link: '/cli/subcommands/machines' },
-            { text: 'Images', link: '/cli/subcommands/images' },
-            { text: 'Screenshots', link: '/cli/subcommands/screenshots' },
-            { text: 'Snapshots', link: '/cli/subcommands/snapshots' }
+            { text: 'init', link: '/cli/subcommands/init' },
+            { text: 'Products', link: '/cli/subcommands/products' },
+            { text: 'Targets', link: '/cli/subcommands/targets' },
+            { text: 'Tests', link: '/cli/subcommands/tests' },
+            { text: 'Dependencies', link: '/cli/subcommands/dependencies' },
+            { text: 'Settings', link: '/cli/subcommands/settings' },
+            { text: 'Platforms', link: '/cli/subcommands/platforms' }
           ]
         }
       ]
