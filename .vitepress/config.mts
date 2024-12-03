@@ -1,8 +1,12 @@
 import { defineConfig } from 'vitepress'
 import * as fs from 'fs';
-import doccData from '../docc.data';
 
-const modules = doccData.load()
+
+
+const baseURL =
+  process.env.ENVIRONMENT=== 'production'
+    ? 'https://packagedsl.com'
+    : 'http://localhost:3000'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -13,7 +17,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'CLI', link: '/cli' },
-      { text: 'Swift DocC', link: '/docc'}
+      { text: 'PackageDSLKit', link: `${baseURL}/swift-docc/documentation/packagedslkit/` }
     ],
     sidebar: [
       { 
@@ -33,16 +37,7 @@ export default defineConfig({
         }
       ]
     },
-    { 
-        text: "Swift DocC",
-        items: [
-        { text: 'Introduction', link: '/docc/' },    
-        {
-          text: 'Modules',
-          items: modules
-        }
-      ]
-    }
+    { text: 'PackageDSLKit', link: `${baseURL}/swift-docc/documentation/packagedslkit/` }
     ],
 
     socialLinks: [
