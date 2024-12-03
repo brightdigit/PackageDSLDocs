@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/node,vuejs
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,vuejs
+# Created by https://www.toptal.com/developers/gitignore/api/node,npm,vuejs,typescript
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,npm,vuejs,typescript
 
 ### Node ###
 # Logs
@@ -149,3 +149,24 @@ npm-debug.log
 yarn-error.log
 
 # End of https://www.toptal.com/developers/gitignore/api/node,vuejs
+
+/coverage
+/src/client/shared.ts
+/src/node/shared.ts
+*.log
+*.tgz
+.DS_Store
+.idea
+.temp
+.vite_opt_cache
+.vscode
+dist
+cache
+temp
+examples-temp
+node_modules
+pnpm-global
+TODOs.md
+*.timestamp-*.mjs
+
+public/swift-docc

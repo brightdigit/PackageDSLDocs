@@ -1,4 +1,12 @@
 import { defineConfig } from 'vitepress'
+import * as fs from 'fs';
+
+
+
+const baseURL =
+  process.env.ENVIRONMENT=== 'production'
+    ? 'https://packagedsl.com'
+    : 'http://localhost:3000'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -8,17 +16,28 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'CLI', link: '/cli' },
+      { text: 'PackageDSLKit', link: `${baseURL}/swift-docc/documentation/packagedslkit/` }
     ],
-
     sidebar: [
-      {
-        text: 'Examples',
+      { 
+        text: "CLI",
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
+        { text: 'Introduction', link: '/cli/' },   
+        { text: 'Getting Started', link: '/cli/getting-started' },   
+        {
+          text: 'Subcommands',
+          items: [       
+            { text: 'Library', link: '/cli/subcommands/libraries' },
+            { text: 'Machine', link: '/cli/subcommands/machines' },
+            { text: 'Images', link: '/cli/subcommands/images' },
+            { text: 'Screenshots', link: '/cli/subcommands/screenshots' },
+            { text: 'Snapshots', link: '/cli/subcommands/snapshots' }
+          ]
+        }
+      ]
+    },
+    { text: 'PackageDSLKit', link: `${baseURL}/swift-docc/documentation/packagedslkit/` }
     ],
 
     socialLinks: [
