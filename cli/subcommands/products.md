@@ -1,49 +1,188 @@
----
-outline: deep
----
+# `products` - Managing Package Products
 
-# Runtime API Examples
+To add, remove, or modify your package's products call the `products` subcommand.
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
+## Subcommands
 
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
+### `add`
 
-```md
-<script setup>
-import { useData } from 'vitepress'
+Add a product to the Swift package.
 
-const { theme, page, frontmatter } = useData()
-</script>
+### Parameters
 
-## Results
+#### `type`
 
-### Theme Data
-<pre>{{ theme }}</pre>
+* `library` _default_
+* `executable`
 
-### Page Data
-<pre>{{ page }}</pre>
+#### `name` _required_
 
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
+#### `moduleName` _lowercase_ of `name` 
+
+### `remove`
+
+Remove a product to the Swift package.
+
+### Parameters
+
+#### `name` _required_
+
+### `modify`
+
+Modify a product to the Swift package.
+
+### Parameters
+
+#### `name` _required_
+
+### Subcommands
+
+#### `target`
+
+##### Arguments
+
+###### `name`
+
+##### Subcommands
+
+###### `add`
+
+Add a target to the product.
+
+###### `remove`
+
+Remove a target to the product.
+
+#### `dependency`
+
+##### Arguments
+
+###### `name`
+
+##### Subcommands
+
+###### `add`
+
+Add a dependency target to the product.
+
+###### `remove`
+
+Remove a dependency target to the product.
+
+##### Options
+
+###### `url`
+
+###### `path`
+
+###### `version`
+
+###### `requirementType`
+
+* `branch`
+* `revision`
+* `exact`
+* `version`
+
+### Examples
+
+#### Adding a Product 
+
+```swift
+import PackageDescription
+
+let package = Package {
+} 
 ```
 
-<script setup>
-import { useData } from 'vitepress'
+```bash
+package products add BushelApp
+```
 
-const { site, theme, page, frontmatter } = useData()
-</script>
+```swift
+import PackageDescription
 
-## Results
+struct BushelApp: Product, Target {}
 
-### Theme Data
-<pre>{{ theme }}</pre>
+let package = Package {
+    BushelApp()
+} 
+```
 
-### Page Data
-<pre>{{ page }}</pre>
+#### Adding a dependency to a product
 
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
+```bash
+package products modify BushelApp dependencies add DataThespian --url=https://github.com/brightdigit/DataThespian.git --version=1.0.0-alpha.5
+```
 
-## More
+```swift
+import PackageDescription
 
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
+struct DataThespian: PackageDependency, TargetDependency {
+  var dependency: Package.Dependency {
+    .package(url: "https://github.com/brightdigit/DataThespian.git", from: "1.0.0-alpha.5")
+  }
+}
+
+struct BushelApp: Product, Target {
+  var dependencies: any Dependencies {
+    DataThespian()
+  }
+}
+
+let package = Package {
+  BushelApp()
+} 
+```
+
+```bash
+package products modify BushelApp targets add BushelViews
+```
+
+```swift
+import PackageDescription
+
+struct BushelViews: Target {
+  var dependencies: any Dependencies {
+  }
+}
+
+struct DataThespian: PackageDependency, TargetDependency {
+  var dependency: Package.Dependency {
+    .package(url: "https://github.com/brightdigit/DataThespian.git", from: "1.0.0-alpha.5")
+  }
+}
+
+struct BushelApp: Product, Target {
+  var dependencies: any Dependencies {
+    BushelViews()
+    DataThespian()
+  }
+}
+
+let package = Package {
+  BushelApp()
+} 
+```
+
+```bash
+package products remove BushelApp
+```
+
+```swift
+import PackageDescription
+
+struct BushelViews: Target {
+  var dependencies: any Dependencies {
+  }
+}
+
+struct DataThespian: PackageDependency, TargetDependency {
+  var dependency: Package.Dependency {
+    .package(url: "https://github.com/brightdigit/DataThespian.git", from: "1.0.0-alpha.5")
+  }
+}
+
+let package = Package {
+} 
+```

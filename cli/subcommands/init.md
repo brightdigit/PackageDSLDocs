@@ -1,85 +1,66 @@
-# Markdown Extension Examples
+# `init` - Initializing a Package
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+To get started, call the `init` subcommand to create a new Swift Package.
 
-## Syntax Highlighting
+## Parameters
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+### `type`
 
-**Input**
+* `empty` _default_
+* `library`
+* `executable`
 
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
+### `name`
+
+* directory name is _default_
+
+## Options
+
+### `defaultLocalization`
+
+### `supportedPlatforms`
+
+### Examples
+
+```bash
+package init
+```
+
+```swift
+import PackageDescription
+
+let package = Package {
+} 
+```
+
+```bash
+package init --type=library
+```
+
+```swift
+import PackageDescription
+
+struct DirectoryName: Product, Target {}
+
+let package = Package {
+  DirectoryName()
+} 
+```
+
+```bash
+package init --type=executable --name=Bushel
+```
+
+```swift
+import PackageDescription
+
+struct Bushel: Product, Target {
+  var productType: ProductType {
+    .executable
   }
 }
+
+let package = Package {
+  Bushel()
+} 
 ```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-
-## Custom Containers
-
-**Input**
-
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
