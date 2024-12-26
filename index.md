@@ -8,14 +8,14 @@ hero:
   tagline: My great project tagline
   actions:
     - theme: brand
-      text: Get the App
-      link: /guide/getting-started
-    - theme: alt
-      text: REST API
-      link: /rest
+      text: Swift Package
+      link: http://github.com/brightdigit/PackageDSL
     - theme: alt
       text: CLI
       link: /cli
+    - theme: DocC
+      text: DocC
+      link: /swift-docc/documentation/packagedslkit/
 
 features:
   - title: Feature A
