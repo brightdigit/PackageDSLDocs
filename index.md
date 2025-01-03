@@ -4,25 +4,22 @@ layout: home
 
 hero:
   name: "PackageDSL"
-  text: "Simplify the management of your Package.swift file."
-  tagline: My great project tagline
+  text: "Simplify your Swift Package"
+  tagline: Easily manage your Swift Package with a simple DSL
   actions:
     - theme: brand
-      text: Swift Package
-      link: http://github.com/brightdigit/PackageDSL
-    - theme: alt
       text: CLI
       link: /cli
-    - theme: DocC
+    - theme: alt
       text: DocC
       link: /swift-docc/documentation/packagedslkit/
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Stay organized
+    details: Keep your dependencies and targets organized
+  - title: Adapt Quickly
+    details: Easy tooling to adapt to new requirements
+  - title: Minimal tooling required
+    details: Very little required to get started
 ---
 

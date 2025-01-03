@@ -4,15 +4,25 @@ To get started, call the `init` subcommand to create a new Swift Package.
 
 ## Parameters
 
-### `type`
+### `path`
+
+Location you'd like to create new Swift Package. The current directory is used otherwise.
+
+### `name`
+
+Overrides the name of the new package and optional product. Otherwise the name of the `path` directory to use.
+
+### `swift-version`
+
+Version of Swift for the Swift Package. Default is **6.0**.
+
+### `package-type`
 
 * `empty` _default_
 * `library`
 * `executable`
-
-### `name`
-
-* directory name is _default_
+                  
+Whether to start with a executable or library product. Default is empty.
 
 ## Options
 
