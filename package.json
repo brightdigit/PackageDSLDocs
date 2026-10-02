@@ -1,15 +1,15 @@
 {
-  "devDependencies" : {
-    "@types/node" : "^22.10.1",
-    "cross-env" : "^7.0.3",
-    "express" : "^4.21.1",
-    "http-proxy-middleware" : "^3.0.3",
-    "vitepress" : "^1.5.0"
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "cross-env": "^7.0.3",
+    "express": "^4.21.1",
+    "http-proxy-middleware": "^3.0.3",
+    "vitepress": "^2.0.0-alpha.20"
   },
-  "scripts" : {
-    "docs:build" : "vitepress build",
-    "docs:dev" : "vitepress dev",
-    "docs:preview" : "vitepress preview",
-    "docs:production" : "cross-env ENVIRONMENT=production vitepress build"
+  "scripts": {
+    "docs:build": "vitepress build",
+    "docs:dev": "vitepress dev",
+    "docs:preview": "vitepress preview",
+    "docs:production": "cross-env ENVIRONMENT=production vitepress build"
   }
 }
